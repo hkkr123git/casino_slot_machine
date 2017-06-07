@@ -1,0 +1,84 @@
+/*
+ * Base CSS
+ */
+body {
+  background-color: #ffffff;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #2B2B2B;
+}
+
+.container {
+  width: 510px;
+  margin: 25px auto;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 3px;
+}
+
+/*
+ * Slot Machine
+ */
+.slot-machine {
+  text-align: center;
+  background-color: #F1EFEE;
+}
+.slot-machine .sm-main {
+  position: relative;
+  padding-top: 40px;
+}
+.slot-machine .sm-main .slot-handle {
+  position: absolute;
+  height: 25px;
+  width: 30px;
+  background-color: #ffffff;
+  border: 3px solid #f27802;
+  left: 415px;
+  top: 75px;
+}
+
+.slot-machine .slot {
+  background-color: #ffffff;
+  background-size: 100px;
+  background-repeat: repeat-y;
+  background-position-y: -4px;
+  height: 65px;
+  width: 100px;
+  display: inline-block;
+  border-radius: 10px;
+  border: 3px solid #584467;
+}
+
+.slot-machine .slot img {
+  width: 100%;
+}
+
+.slot-machine .motion {
+  animation: animated 3s linear infinite;
+}
+.slot-machine .sm-action {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.slot-machine .sm-action img {
+  cursor: pointer;
+}
+.slot-machine .sm-action img:hover {
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.slot-machine .sm-result {
+  padding: 5px 0px;
+}
+
+
+/*
+ * Animations
+ */
+@keyframes animated {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 1000%;
+  }
+}
