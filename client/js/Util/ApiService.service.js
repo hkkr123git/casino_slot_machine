@@ -1,4 +1,7 @@
 'use strict';
+/*
+	Class for defining api calls
+*/
 
 class ApiService {
   constructor() {

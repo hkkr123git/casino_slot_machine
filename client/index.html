@@ -2,12 +2,10 @@
 <html>
 <head>
   <title>Slot Machine</title>
+  <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-  <!-- Slot Machine: Header -->
-  <!-- Slot Machine -->
   <div class="slot-machine" >
     <!-- Slot Machine: Main -->
     <div class="sm-main">
@@ -24,7 +22,9 @@
 
     <!-- Slot Machine: Action Container -->
     <div class="sm-action">
-      <img src="images/button.png" class="cta-btn" height="50" width="50"/>
+      <button id="spin_btn" class="cta-btn">
+        <img src="images/button.png" height="50" width="50"/>
+      </button>
     </div>
 
     <!-- Slot Machine: Messages View -->
@@ -40,7 +40,6 @@
       <!-- Slot machine: Legend/Winning Combinations -->
     </div>
   </div>
-</div>
 <script type="text/javascript" src="js/Util/Service.js"></script>
 <script type="text/javascript" src="js/Util/ApiService.service.js"></script>
 <script type="text/javascript" src="js/Util/WebUrl.config.js"></script>

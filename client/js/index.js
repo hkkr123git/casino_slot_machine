@@ -19,6 +19,9 @@ class SlotMachine {
   }
 
   clearMessages () {
+    /*
+      Reseting result messages
+    */
     document.getElementById('countDownNotification').innerHTML = '';
     document.getElementById('Result').innerHTML = '';
     document.getElementById('spinWrapper').style.display = 'none';
@@ -26,6 +29,11 @@ class SlotMachine {
   }
 
   getSpinRequest () {
+    /*
+      Building spin request
+      slotNumber: Number of slots
+      slotItems: Number images used in each slots
+    */
     const spinRequest = {};
     spinRequest.slotNumber = 3;
     spinRequest.slotItems = [0, 1, 2, 3, 4, 5];
@@ -34,7 +42,11 @@ class SlotMachine {
   }
 
   playSlots () {
+    /*
+      Invoking slot machine spin
+    */
     const context = this;
+    document.getElementById('spin_btn').disabled = 'disabled';
     this.clearMessages();
     this.intervalRef = setInterval(function () {
       context.setReels('slot1_image', 100, 0);
@@ -46,14 +58,20 @@ class SlotMachine {
       ApiService.makeSlotSpin(spinRequest).then(function(response) {
         context.processSpinResponse(response);
       }, function(error) {
+        context.clearMessages();
+        context.stopReels();
         alert('We are facing some technical issues. Please try again later!');
       });
     }, 1500);
   }
 
   processSpinResponse (response) {
+    /*
+      Processing spin api response
+    */
     const context = this;
     setTimeout(function () {
+      document.getElementById('spin_btn').disabled = false;
       const slot1ImageHolder = document.getElementById('slot1_image');
       const slot2ImageHolder = document.getElementById('slot2_image');
       const slot3ImageHolder = document.getElementById('slot3_image');
@@ -64,6 +82,7 @@ class SlotMachine {
       resultContainer.innerHTML = response.responseObject.winMessage;
 
       if (response.responseObject.isBonus) {
+        document.getElementById('spin_btn').disabled = 'disabled';
         context.initBonusSpin();
       }
     }, 700);
@@ -71,6 +90,9 @@ class SlotMachine {
   }
 
   initBonusSpin () {
+    /*
+      Invoking automatic bonus spin
+    */
     let counterValue = 5;
     const context = this;
     document.getElementById('countDownNotification').innerHTML =
@@ -88,6 +110,9 @@ class SlotMachine {
   }
 
   setReels (elementId, speed, delay) {
+    /*
+      Setting reels for spin
+    */
     setTimeout(function () {
       const slot1ImageHolder = document.getElementById(elementId);
       this.reelBannersIds = ['Symbol_0.png', 'Symbol_1.png', 'Symbol_2.png', 'Symbol_3.png', 'Symbol_4.png', 'Symbol_5.png'];
@@ -105,6 +130,9 @@ class SlotMachine {
   }
 
   stopReels () {
+    /*
+      Stoping reels spin
+    */
     clearInterval(this.intervalRef);
   }
 }

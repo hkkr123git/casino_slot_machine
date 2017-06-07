@@ -1,5 +1,9 @@
 'use strict';
 
+/*
+  Common class for calling all the apis
+*/
+
 class Service {
   constructor() {
     this.xhttp = new XMLHttpRequest();
